@@ -8,6 +8,7 @@ How to
 
 1. Add the plugin repository to your pom.xml file:
 
+.
 
 	<pluginRepositories>
 		<pluginRepository>
@@ -26,6 +27,7 @@ How to
 
 2. Add the plug in:
 
+.
 
 	<build>
 		<plugins>
