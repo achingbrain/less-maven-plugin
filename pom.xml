@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<name>maven-less-plugin</name>
+	<groupId>net.achingbrain</groupId>
+	<artifactId>maven-less-plugin</artifactId>
+	<version>1.0.0</version>
+	<packaging>maven-plugin</packaging>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<repositories>
+		<repository>
+			<id>achingbrain-releases</id>
+			<url>http://achingbrain.github.com/maven-repo/releases</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>achingbrain-snapshots</id>
+			<url>http://achingbrain.github.com/maven-repo/snapshots</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<distributionManagement>
+		<repository>
+			<id>achingbrain-releases</id>
+			<url>file:///${basedir}/../maven-repo/releases</url>
+		</repository>
+		<snapshotRepository>
+			<uniqueVersion>false</uniqueVersion>
+			<id>achingbrain-snapshots</id>
+			<url>file:///${basedir}/../maven-repo/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<properties>
+		<!-- Build settings -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.6</java.version>
+
+		<!-- Plugin versions -->
+		<maven.plugin.compiler.version>2.3.2</maven.plugin.compiler.version>
+
+		<!-- Dependency versions -->
+		<maven.version>3.0.3</maven.version>
+		<commons.lang.version>2.3</commons.lang.version>
+		<junit.version>4.8.2</junit.version>
+		<mockito.version>1.8.4</mockito.version>
+		<less.utils.version>0.0.5</less.utils.version>
+	</properties>
+	
+	<build>
+		<plugins>
+			<!-- Configure compiler for Java 6 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.plugin.compiler.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-plugin-api</artifactId>
+			<version>${maven.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-model</artifactId>
+			<version>${maven.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>${commons.lang.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>yevgeniy.melnichuk</groupId>
+			<artifactId>less-utils</artifactId>
+			<version>${less.utils.version}</version>
+		</dependency>
+
+		<!-- Test dependencies -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>${mockito.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+</project>
