@@ -6,9 +6,7 @@ Another [LESS](http://lesscss.org/) plugin for Maven.  This one is based on the 
 How to
 ------
 
-1. Add the plugin repository to your pom.xml file:
-
-.
+1 Add the plugin repository to your pom.xml file:
 
 	<pluginRepositories>
 		<pluginRepository>
@@ -25,9 +23,7 @@ How to
 	</pluginRepositories>
 
 
-2. Add the plug in:
-
-.
+2 Add the plug in:
 
 	<build>
 		<plugins>
