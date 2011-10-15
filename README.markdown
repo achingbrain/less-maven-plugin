@@ -8,6 +8,7 @@ How to
 
 1. Add the plugin repository to your pom.xml file:
 
+
 	<pluginRepositories>
 		<pluginRepository>
 			<id>achingbrain-releases</id>
@@ -22,7 +23,9 @@ How to
 		</pluginRepository>
 	</pluginRepositories>
 
+
 2. Add the plug in:
+
 
 	<build>
 		<plugins>
@@ -33,6 +36,7 @@ How to
 			</plugin>
 		</plugins>
 	</build>
+
 
 By default the plugin will recursively search the contents of your src/main/webapp directory for .less files, compile them as .css files and put them in your project's output directory at the same path.  So:
 
@@ -76,7 +80,7 @@ You can specify the input & output directories, as well as a file include/exclud
 Phases
 ------
 
-By default the plugin executes in the (compile phase)[http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference].  To change this, specify an execution blocks:
+By default the plugin executes in the [compile phase](http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference).  To change this, specify an execution blocks:
 
 	<build>
 		<plugins>
