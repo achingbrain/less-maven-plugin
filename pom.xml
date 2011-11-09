@@ -5,7 +5,7 @@
 	<name>maven-less-plugin</name>
 	<groupId>net.achingbrain</groupId>
 	<artifactId>maven-less-plugin</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<packaging>maven-plugin</packaging>
 
 	<licenses>
@@ -57,9 +57,11 @@
 		<!-- Dependency versions -->
 		<maven.version>3.0.3</maven.version>
 		<commons.lang.version>2.3</commons.lang.version>
+		<commons.io.version>1.4</commons.io.version>
+		<rhino.version>1.7R2</rhino.version>
 		<junit.version>4.8.2</junit.version>
 		<mockito.version>1.8.4</mockito.version>
-		<less.utils.version>0.0.5</less.utils.version>
+
 	</properties>
 	
 	<build>
@@ -94,9 +96,14 @@
 			<version>${commons.lang.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>yevgeniy.melnichuk</groupId>
-			<artifactId>less-utils</artifactId>
-			<version>${less.utils.version}</version>
+			<groupId>rhino</groupId>
+			<artifactId>js</artifactId>
+			<version>${rhino.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons.io.version}</version>
 		</dependency>
 
 		<!-- Test dependencies -->
