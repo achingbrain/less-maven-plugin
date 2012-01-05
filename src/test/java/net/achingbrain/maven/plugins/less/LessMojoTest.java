@@ -71,6 +71,8 @@ public class LessMojoTest {
 		mojo.setInputDirectory(new File("src/test/resources/net/achingbrain/maven/plugins/less"));
 		mojo.setIncludes(patternSet);
 		mojo.setOutputDirectory(new File(System.getProperty("java.io.tmpdir")));
+		mojo.setEnvPath("env-1.2.13.js");
+		mojo.setLessPath("less-1.1.5.min.js");
 
 		mojo.execute();
 
@@ -101,6 +103,29 @@ public class LessMojoTest {
 		mojo.setInputDirectory(new File("src/test/resources/net/achingbrain/maven/plugins/less"));
 		mojo.setIncludes(patternSet);
 		mojo.setOutputDirectory(new File(System.getProperty("java.io.tmpdir") + "/" + path));
+		mojo.setEnvPath("env-1.2.13.js");
+		mojo.setLessPath("less-1.1.5.min.js");
+
+		mojo.execute();
+
+		assertTrue(new File(System.getProperty("java.io.tmpdir") + "/" + path + "/css/myfile.css").exists());
+		assertTrue(new File(System.getProperty("java.io.tmpdir") + "/" + path + "/css/myotherfile.css").exists());
+		assertTrue(new File(System.getProperty("java.io.tmpdir") + "/" + path + "/css/dir/yetanotherfile.css").exists());
+	}
+
+	@Test
+	public void testExecute_integration_absoluteFilePaths() throws Exception {
+		PatternSet patternSet = new PatternSet();
+		patternSet.addInclude("**/*.less");
+		patternSet.addInclude("**/*.css");
+
+		String path = UUID.randomUUID().toString();
+
+		mojo.setInputDirectory(new File("src/test/resources/net/achingbrain/maven/plugins/less"));
+		mojo.setIncludes(patternSet);
+		mojo.setOutputDirectory(new File(System.getProperty("java.io.tmpdir") + "/" + path));
+		mojo.setEnvPath("src/main/resources/net/achingbrain/maven/plugins/less/env-1.2.13.js");
+		mojo.setLessPath("src/main/resources/net/achingbrain/maven/plugins/less/less-1.1.5.min.js");
 
 		mojo.execute();
 

@@ -6,31 +6,25 @@ import org.mozilla.javascript.ContextFactory;
 import org.mozilla.javascript.Scriptable;
 import org.mozilla.javascript.Undefined;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.*;
 
 /**
  * Borrowed from http://code.google.com/p/maven-less-plugin
  */
 public class JsHelper {
 	private static JsHelper instance;
-	public static String ENV_VERSION = "env-1.2.13.js";
-	public static String LESS_VERSION = "less-1.1.3.min.js";
-
 	private Context ctx;
 	private Scriptable scope;
 
-	private JsHelper() throws IOException {
+	private JsHelper(String lessPath, String envPath) throws IOException {
 		ctx = ContextFactory.getGlobal().enterContext();
 		ctx.setOptimizationLevel(-1);
 		ctx.setLanguageVersion(Context.VERSION_1_7);
 
 		scope = ctx.initStandardObjects();
 
-		loadInternalJsResource("env", ENV_VERSION);
-		loadInternalJsResource("less", LESS_VERSION);
+		loadInternalJsResource("env", envPath);
+		loadInternalJsResource("less", lessPath);
 	}
 
 	public String compileLess(String less) {
@@ -61,15 +55,25 @@ public class JsHelper {
 		return css;
 	}
 
-	private void loadInternalJsResource(String name, String relativePath) throws IOException {
-		InputStream is = JsHelper.class.getResourceAsStream(relativePath);
+	private void loadInternalJsResource(String name, String path) throws IOException {
+		InputStream is;
+		File file = new File(path);
+
+		if(file.exists()) {
+			// passed absolute file path
+			is = new FileInputStream(file);
+		} else {
+			// load from classpath
+			is = JsHelper.class.getResourceAsStream(path);
+		}
+
 		Reader reader = new InputStreamReader(is);
 		ctx.evaluateReader(scope, reader, name, 1, null);
 	}
 
-	static public JsHelper getInstance() throws IOException {
+	static public JsHelper getInstance(String lessVersion, String envVersion) throws IOException {
 		if (instance == null) {
-			instance = new JsHelper();
+			instance = new JsHelper(lessVersion, envVersion);
 		}
 
 		return instance;

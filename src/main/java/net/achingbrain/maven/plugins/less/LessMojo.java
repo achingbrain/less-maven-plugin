@@ -40,6 +40,16 @@ public class LessMojo extends AbstractMojo {
 	 */
 	private File inputDirectory;
 
+	/**
+	 * @parameter default-value="less-1.1.5.min.js"
+	 */
+	private String lessPath;
+
+	/**
+	 * @parameter default-value="env-1.2.13.js"
+	 */
+	private String envPath;
+
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		try {
 			List<File> inputFiles = findFiles();
@@ -49,7 +59,7 @@ public class LessMojo extends AbstractMojo {
 				String less = includeIncludedFiles(lessFile);
 
 				// compiles LESS to css
-				JsHelper jsHelper = JsHelper.getInstance();
+				JsHelper jsHelper = JsHelper.getInstance(lessPath, envPath);
 				String compiled = jsHelper.compileLess(less);
 
 				// set up output file
@@ -166,5 +176,13 @@ public class LessMojo extends AbstractMojo {
 
 	public void setInputDirectory(File inputDirectory) {
 		this.inputDirectory = inputDirectory;
+	}
+
+	public void setLessPath(String lessPath) {
+		this.lessPath = lessPath;
+	}
+
+	public void setEnvPath(String envPath) {
+		this.envPath = envPath;
 	}
 }

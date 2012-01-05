@@ -4,8 +4,8 @@
 
 	<name>maven-less-plugin</name>
 	<groupId>net.achingbrain</groupId>
-	<artifactId>maven-less-plugin</artifactId>
-	<version>1.0.1</version>
+	<artifactId>less-maven-plugin</artifactId>
+	<version>1.0.2</version>
 	<packaging>maven-plugin</packaging>
 
 	<licenses>
