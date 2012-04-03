@@ -41,7 +41,7 @@ public class LessMojo extends AbstractMojo {
 	private File inputDirectory;
 
 	/**
-	 * @parameter default-value="less-1.1.5.min.js"
+	 * @parameter default-value="less-1.3.0.min.js"
 	 */
 	private String lessPath;
 

@@ -30,7 +30,7 @@ How to
 			<plugin>
 				<groupId>net.achingbrain</groupId>
 				<artifactId>less-maven-plugin</artifactId>
-				<version>1.0.2</version>
+				<version>1.0.3</version>
 			</plugin>
 		</plugins>
 	</build>
@@ -62,7 +62,7 @@ You can specify the input & output directories, as well as a file include/exclud
 			<plugin>
 				<groupId>net.achingbrain</groupId>
 				<artifactId>less-maven-plugin</artifactId>
-				<version>1.0.2</version>
+				<version>1.0.3</version>
 				<configuration>
 					<inputDirectory>${project.basedir}/src/main/webapp/css/static</inputDirectory>
 					<includes>
@@ -85,7 +85,7 @@ By default the plugin executes in the [compile phase](http://maven.apache.org/gu
 			<plugin>
 				<groupId>net.achingbrain</groupId>
 				<artifactId>less-maven-plugin</artifactId>
-				<version>1.0.2</version>
+				<version>1.0.3</version>
 				<executions>
 					<execution>
 						<id>Runs in process-sources phase</id>
@@ -115,7 +115,7 @@ To execute multiple times, simply specify multiple execution blocks
 			<plugin>
 				<groupId>net.achingbrain</groupId>
 				<artifactId>less-maven-plugin</artifactId>
-				<version>1.0.2</version>
+				<version>1.0.3</version>
 				<executions>
 					<execution>
 						<id>Compiles from folder A</id>
@@ -145,14 +145,14 @@ To execute multiple times, simply specify multiple execution blocks
 Specifying an alternate version of env.js or less.js
 ------------------------------------------
 
-env.js 1.2.13 and less.js 1.1.5 is bundled with this plugin, but you can specify alternate versions in case new ones have been released.  To do this, configure the lessPath and/or envPath plugin parameters:
+env.js 1.2.13 and less.js 1.3.0 is bundled with this plugin, but you can specify alternate versions in case new ones have been released.  To do this, configure the lessPath and/or envPath plugin parameters:
 
 	<build>
 			<plugins>
 				<plugin>
 					<groupId>net.achingbrain</groupId>
 					<artifactId>less-maven-plugin</artifactId>
-					<version>1.0.2</version>
+					<version>1.0.3</version>
 					<configuration>
 						<lessPath>${project.basedir}/src/main/resources/less.js</lessPath>
 						<envPath>${project.basedir}/src/main/resources/env.js</envPath>
